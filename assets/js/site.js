@@ -240,7 +240,7 @@
         .catch(function () {
           status.setAttribute("data-state", "error");
           status.innerHTML =
-            'Sorry, that didn’t send. Please call <a href="tel:+61415085122">0415 085 122</a> or email <a href="mailto:info@annergy.com.au">info@annergy.com.au</a> and we’ll sort it out.';
+            'Sorry, that didn’t send. Please call <a href="tel:+61416085122">0416 085 122</a> or email <a href="mailto:info@annergy.com.au">info@annergy.com.au</a> and we’ll sort it out.';
         })
         .finally(function () {
           if (submit) { submit.disabled = false; submit.textContent = submitLabel; }
