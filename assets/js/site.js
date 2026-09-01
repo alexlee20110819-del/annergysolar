@@ -179,8 +179,9 @@
         clearError(field);
         var v = field.value.trim();
         var bad = "";
+        var optional = !field.required;
         if (!v) {
-          bad = "Please fill this in so we can get back to you.";
+          if (!optional) bad = "Please fill this in so we can get back to you.";
         } else if (field.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) {
           bad = "That email address looks incomplete.";
         } else if (field.type === "tel" && v.replace(/\D/g, "").length < 8) {
@@ -228,19 +229,37 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       })
-        .then(function (res) { return res.json().then(function (b) { return { ok: res.ok, body: b }; }); })
-        .then(function (r) {
-          if (!r.ok) throw new Error(r.body && r.body.error ? r.body.error : "Request failed");
-          form.reset();
-          status.setAttribute("data-state", "success");
-          status.textContent =
-            "Thanks — your request is in. A Brisbane-based consultant will call you within one business day to book your roof assessment.";
-          status.focus();
+        .then(function (res) {
+          // Read as text first: an error page or a proxy can return HTML, and
+          // res.json() would then throw a parser message at the customer.
+          return res.text().then(function (raw) {
+            var body = null;
+            try { body = JSON.parse(raw); } catch (e) { /* not JSON */ }
+            return { ok: res.ok, body: body };
+          });
         })
-        .catch(function () {
+        .then(function (r) {
+          if (r.ok) {
+            form.reset();
+            status.setAttribute("data-state", "success");
+            status.textContent =
+              "Thanks \u2014 your request is in. A Brisbane-based consultant will call you within one business day to book your roof assessment.";
+            status.focus();
+            return;
+          }
+          var err = new Error("request failed");
+          // Only surface a message the server actually wrote for the visitor.
+          if (r.body && typeof r.body.error === "string") err.serverMessage = r.body.error;
+          throw err;
+        })
+        .catch(function (err) {
           status.setAttribute("data-state", "error");
-          status.innerHTML =
-            'Sorry, that didn’t send. Please call <a href="tel:+61416085122">0416 085 122</a> or email <a href="mailto:info@annergy.com.au">info@annergy.com.au</a> and we’ll sort it out.';
+          if (err && err.serverMessage) {
+            status.textContent = err.serverMessage;
+          } else {
+            status.innerHTML =
+              'Sorry, that didn\u2019t send. Please call <a href="tel:+61416085122">0416 085 122</a> or email <a href="mailto:info@annergy.com.au">info@annergy.com.au</a> and we\u2019ll sort it out.';
+          }
         })
         .finally(function () {
           if (submit) { submit.disabled = false; submit.textContent = submitLabel; }

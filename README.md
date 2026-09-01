@@ -98,18 +98,39 @@ a CSP and the other security headers. `404.html` is served automatically.
 npx vercel --prod
 ```
 
-### Making the quote form deliver
+### The quote form — READ THIS BEFORE LAUNCH
 
-`api/quote.js` validates server-side and drops honeypot spam, but **currently
-only logs the lead**. To send it:
+The form asks for four things: name, phone and postcode (required) plus an
+optional email. Everything else is asked on the call.
 
-1. Set `RESEND_API_KEY` and `QUOTE_INBOX` in the Vercel project's environment
-   variables.
-2. Uncomment the delivery block in `api/quote.js`.
+`api/quote.js` validates server-side, drops honeypot spam, and emails the lead.
+**It needs two environment variables in the Vercel project or it will not send:**
 
-Any provider works — the block is a plain `fetch`. Until it's wired up the form
-still validates and the front end still degrades to the phone number if the
-request fails.
+    RESEND_API_KEY   an API key from resend.com
+    QUOTE_INBOX      where leads land, e.g. info@annergy.com.au
+
+You also need to verify `annergy.com.au` as a sending domain in Resend, because
+the function sends `from: website@annergy.com.au`.
+
+Until both variables are set, the handler returns **503** and tells the visitor
+to phone instead. That is deliberate. It would be easy to return a cheerful
+"thanks, we got it" and quietly drop the lead into a log file, and that is the
+single worst thing a quote form on a trades site can do — nobody notices for
+weeks. Every lead is also written to the error log, so if delivery ever breaks
+the enquiry is still recoverable from the Vercel function logs.
+
+Using a different provider? Replace the `deliver()` function; nothing else
+changes.
+
+Behaviour verified end to end:
+
+| Situation | Visitor sees |
+|---|---|
+| Not configured (no env vars) | 503 — "call 0416 085 122 instead" |
+| Provider rejects the send | 502 — same message, lead written to the log |
+| Missing or invalid fields | 400 — the specific fields highlighted |
+| Wrong method / honeypot filled | 405 / silent 200 |
+| Configured and sending | "Thanks — your request is in", form clears |
 
 ## Live details
 

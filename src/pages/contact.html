@@ -32,9 +32,9 @@
     <span class="eyebrow">Free assessment</span>
     <h1>Tell us about your roof.</h1>
     <p class="lede">
-      Fill this in and a Brisbane-based consultant will call you within one business day to book a
-      time. The assessment is free, takes about 40 minutes, and ends with a fixed-price quote — or an
-      honest recommendation to wait.
+      Three details is all we need. We'll call you within one business day to book a time. The
+      assessment is free, takes about 40 minutes, and ends with a fixed-price quote — or an honest
+      recommendation to wait.
     </p>
   </div>
 </section>
@@ -45,6 +45,7 @@
       <div>
         <form class="form card" data-quote-form action="/api/quote" method="post" novalidate>
           <h2 style="font-size:var(--step-2)">Request your free assessment</h2>
+          <p class="fine">Name, phone and postcode. We'll ask everything else on the call.</p>
 
           <div class="form-status" data-form-status role="status" tabindex="-1"></div>
 
@@ -63,54 +64,15 @@
 
           <div class="form__row form__row--2">
             <div>
-              <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
-              <input class="input" id="email" name="email" type="email" autocomplete="email" required data-validate>
-              <p class="error-text" data-error-for="email"></p>
-            </div>
-            <div>
               <label for="postcode">Postcode <span class="req" aria-hidden="true">*</span></label>
               <input class="input" id="postcode" name="postcode" type="text" autocomplete="postal-code" inputmode="numeric" maxlength="4" placeholder="4000" required data-validate>
               <p class="error-text" data-error-for="postcode"></p>
             </div>
-          </div>
-
-          <div class="form__row form__row--2">
             <div>
-              <label for="property">Property type</label>
-              <select class="select" id="property" name="property">
-                <option value="house">House</option>
-                <option value="townhouse">Townhouse or unit</option>
-                <option value="commercial">Commercial or industrial</option>
-                <option value="rental">Investment property</option>
-              </select>
+              <label for="email">Email <span class="fine" style="font-weight:400">(optional)</span></label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" data-validate>
+              <p class="error-text" data-error-for="email"></p>
             </div>
-            <div>
-              <label for="bill">Typical quarterly bill</label>
-              <select class="select" id="bill" name="bill">
-                <option value="under-400">Under $400</option>
-                <option value="400-700" selected>$400 – $700</option>
-                <option value="700-1200">$700 – $1,200</option>
-                <option value="over-1200">Over $1,200</option>
-                <option value="unsure">Not sure</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label for="interest">What are you after?</label>
-            <select class="select" id="interest" name="interest">
-              <option value="solar">Solar panels</option>
-              <option value="solar-battery" selected>Solar and a battery</option>
-              <option value="battery-retrofit">Battery for an existing system</option>
-              <option value="ev">EV charger</option>
-              <option value="service">Repair, service or health check</option>
-              <option value="commercial">Commercial proposal</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="message">Anything we should know? <span class="fine" style="font-weight:400">(optional)</span></label>
-            <textarea class="textarea" id="message" name="message" placeholder="Roof type, shading, storeys, a deadline, or a quote you'd like us to sanity-check."></textarea>
           </div>
 
           <div class="consent">
