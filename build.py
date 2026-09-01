@@ -15,7 +15,7 @@ import sys
 ROOT = pathlib.Path(__file__).parent
 PAGES = ROOT / "src" / "pages"
 BASE = (ROOT / "src" / "partials" / "base.html").read_text()
-SITE = "https://www.annergysolar.com.au"
+SITE = "https://annergy.com.au"
 
 NAV_KEYS = ["services", "pricing", "work", "about", "faq"]
 

@@ -89,7 +89,40 @@ The OG card is generated from `assets/img/og.svg` (which embeds the logo):
     sips -c 630 1200 /tmp/og.svg.png --out /tmp/crop.png
     sips -s format jpeg -s formatOptions 84 /tmp/crop.png --out assets/img/og.jpg
 
-## Deploying
+## Deploying to HostPapa (cPanel), plain Apache hosting
+
+This is the version currently in use: no Vercel, no Node — `.htaccess` does the
+clean URLs and headers that `vercel.json` did on Vercel, and `api/quote.php`
+replaces the Node serverless function. Both were tested against a real local
+Apache 2.4 instance (mod_rewrite, mod_headers, mod_expires, mod_deflate) before
+shipping, not just eyeballed.
+
+**Upload, via cPanel → File Manager:**
+
+1. Run `python3 build.py` locally first, so the root-level `.html` files are
+   current.
+2. Select every file and folder in the project root **except** `src/`,
+   `serve.py`, `build.py`, `tools/`, `README.md`, `.git/`, `.gitignore` —
+   those are build-time/dev only and don't need to go on the server.
+   That leaves: all the `.html` files, `.htaccess`, `robots.txt`,
+   `sitemap.xml`, `site.webmanifest`, `assets/`, `api/`.
+3. Zip them, upload the zip into `public_html` via File Manager, then use
+   File Manager's **Extract** so the files land directly in `public_html`
+   (not inside a subfolder).
+4. Visit the domain — it should serve the real site immediately, no DNS
+   change needed, since this is the same server your domain already
+   resolves to.
+
+**The contact form needs one thing confirmed:** `api/quote.php` sends via
+PHP's `mail()` to `info@annergy.com.au` from `website@annergy.com.au`. Check
+that `website@annergy.com.au` is a real mailbox or alias on this hosting
+account — some mail setups reject a `From:` address that doesn't exist,
+routing it to spam or rejecting the send outright. If leads stop arriving,
+check the inbox's spam folder first, then the PHP error log (cPanel → Errors,
+or `~/logs/`) — every lead is written there before a send is attempted, so
+nothing is silently lost even if delivery fails.
+
+## Deploying to Vercel (alternative — not the current path)
 
 Push to Vercel — `vercel.json` sets clean URLs, immutable caching on `/assets`,
 a CSP and the other security headers. `404.html` is served automatically.
