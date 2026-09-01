@@ -25,7 +25,7 @@ MANIFEST = [
     ("commercial",          1200, 900, "Warehouse rooftop array, wide shot",          "Services — commercial"),
     ("case-wavell-heights", 1200, 800, "Finished 13.2 kW array on a tile roof",       "Our Work — case 1"),
     ("case-coorparoo",      1200, 800, "Queenslander rear pitch + Powerwall",         "Our Work — case 2"),
-    ("case-rocklea",        1200, 800, "99 kW warehouse array from above",            "Our Work — case 3"),
+    ("case-geebung",        1200, 800, "99 kW warehouse array from above",            "Our Work — case 3"),
     ("team",                1400, 880, "The crew in front of a branded ute",          "About — team"),
 ]
 

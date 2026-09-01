@@ -124,7 +124,24 @@ Two things I inferred rather than were told — check them:
       the logo and body copy say "Annergy". Change the titles if you'd rather be
       "Annergy" everywhere.
 
-Still placeholder, and must be replaced:
+### Confirmed business details
+
+Supplied and now reflected throughout the site:
+
+- **Panels** — Jinko Solar, HT-SAAE, ET Solar, Akcome, Seraphim
+- **Inverters** — SMA, Fronius, Sungrow, Growatt, Huawei
+- **Battery storage** — offered, deliberately brand-neutral in the copy (no battery
+  supplier was specified, so nothing names a battery manufacturer anywhere)
+- **Scope** — residential plus small commercial to about 30 kW. The site previously
+  claimed 30–500 kW and a 99 kW warehouse case study; both are gone.
+- **Service area** — Brisbane and South East Queensland. Energex is named as the
+  distributor throughout, which is correct for SEQ only — if you ever work outside
+  that footprint, those references need generalising.
+
+Named equipment lives in one place, `src/pages/services.html` under `#equipment`,
+plus shorter mentions on the home and pricing pages. Add or drop a brand there first.
+
+### Still placeholder, and must be replaced
 
 - [ ] Address `Unit 4, 120 Kingsford Smith Drive, Hamilton QLD 4007`
 - [ ] `ABN 00 000 000 000` and `QLD Electrical Contractor Licence 00000`
@@ -133,6 +150,7 @@ Still placeholder, and must be replaced:
 - [ ] Prices: $5,290 / $7,890 / $9,690 and the $8,600 battery
 - [ ] Three case studies and three testimonials — written to be realistic, but invented
 - [ ] Accreditation claims (CEC Approved Retailer, Master Electricians, Energex)
+- [ ] Panel wattage (440 W) and the exact inverter model per package on the pricing page
 - [ ] Privacy policy and terms — templates, need a lawyer's eye
 - [ ] Analytics snippet — a marked comment slot is in `base.html`, nothing loads by default
 
