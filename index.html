@@ -6,7 +6,7 @@
 <title>Annergy Solar | Solar Panel & Battery Installation in Brisbane</title>
 <meta name="description" content="Brisbane-owned solar and battery installers. CEC Approved Retailer, 2,400+ local installs, 10-year workmanship warranty. Free roof assessment, fixed-price quote in 48 hours.">
 <link rel="canonical" href="https://annergy.com.au/">
-<meta name="theme-color" content="#12181c">
+<meta name="theme-color" content="#241f1c">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -30,11 +30,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Syne:wght@700;800&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css">
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://www.annergy.com.au/#business","name":"Annergy Solar","description":"Solar panel and battery storage design, installation and servicing for homes and businesses across Greater Brisbane.","url":"https://www.annergy.com.au/","telephone":"+61-416-085-122","email":"info@annergy.com.au","priceRange":"$$","image":"https://www.annergy.com.au/assets/img/og.jpg","address":{"@type":"PostalAddress","streetAddress":"Unit 4, 120 Kingsford Smith Drive","addressLocality":"Hamilton","addressRegion":"QLD","postalCode":"4007","addressCountry":"AU"},"geo":{"@type":"GeoCoordinates","latitude":-27.4392,"longitude":153.0698},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"13:00"}],"areaServed":[{"@type":"City","name":"Brisbane"},{"@type":"City","name":"Ipswich"},{"@type":"City","name":"Logan"},{"@type":"City","name":"Redland City"},{"@type":"City","name":"Moreton Bay"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"384"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Solar and battery services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Residential solar installation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Home battery storage"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Small commercial solar up to 30 kW"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"EV charger installation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Solar repairs and servicing"}}]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://www.annergy.com.au/#business","name":"Annergy Solar","legalName":"ANN International Pty Ltd","taxID":"39 628 044 360","description":"Solar panel and battery storage design, installation and servicing for homes and businesses across Greater Brisbane.","url":"https://www.annergy.com.au/","telephone":"+61-416-085-122","email":"info@annergy.com.au","priceRange":"$$","image":"https://www.annergy.com.au/assets/img/og.jpg","address":{"@type":"PostalAddress","streetAddress":"40 Mascar Street","addressLocality":"Upper Mount Gravatt","addressRegion":"QLD","postalCode":"4122","addressCountry":"AU"},"geo":{"@type":"GeoCoordinates","latitude":-27.5378,"longitude":153.0827},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"13:00"}],"areaServed":[{"@type":"City","name":"Brisbane"},{"@type":"City","name":"Ipswich"},{"@type":"City","name":"Logan"},{"@type":"City","name":"Redland City"},{"@type":"City","name":"Moreton Bay"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"384"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Solar and battery services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Residential solar installation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Home battery storage"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Small commercial solar up to 30 kW"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"EV charger installation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Solar repairs and servicing"}}]}}</script>
 <!-- Analytics: drop your GA4 / Plausible snippet here. Nothing is loaded by default. -->
 </head>
 <body>
@@ -62,14 +62,16 @@
 <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.6 2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.44 6.19 20.5l1.11-6.47L2.6 9.45l6.5-.95z"/></symbol>
 </defs></svg>
 
-<header class="header">
+<header class="header" data-float="true" id="site-header">
   <div class="wrap header__bar">
     <a class="logo" href="/" aria-label="Annergy — home">
-      <img src="/assets/img/annergy-logo.png" width="260" height="59" alt="Annergy">
+      <img class="logo__mark" src="/assets/img/mark.png" width="101" height="50" alt="">
+      <span class="logo__text">Annergy<b>.</b></span>
     </a>
 
     <nav class="nav" aria-label="Main">
       <ul class="nav__list">
+        <li><a class="nav__link" href="/" aria-current="page">Home</a></li>
         <li><a class="nav__link" href="/services">Solar &amp; Batteries</a></li>
         <li><a class="nav__link" href="/pricing">Pricing</a></li>
         <li><a class="nav__link" href="/work">Our Work</a></li>
@@ -90,8 +92,9 @@
     </button>
   </div>
 
-  <div class="mobile-nav wrap" id="mobile-nav" data-mobile-nav data-open="false">
+  <div class="mobile-nav" id="mobile-nav" data-mobile-nav data-open="false">
     <ul class="mobile-nav__list">
+      <li><a href="/">Home</a></li>
       <li><a href="/services">Solar &amp; Batteries</a></li>
       <li><a href="/pricing">Pricing</a></li>
       <li><a href="/work">Our Work</a></li>
@@ -107,53 +110,44 @@
 </header>
 
 <main id="main">
-<section class="hero">
-  <div class="wrap hero__grid">
-    <div>
-      <span class="eyebrow">Brisbane owned since 2013</span>
-      <h1>Solar and batteries, done properly, by <span class="mark">Brisbane locals</span>.</h1>
-      <p class="hero__lede">
-        We're an electrical contractor that specialises in solar. Our own crews design,
-        install and look after every system — sized around how your household actually
-        uses power, and built for Queensland heat and storms.
-      </p>
-      <div class="hero__actions">
-        <a class="btn btn--primary btn--lg" href="/contact">Book a free assessment</a>
-        <a class="btn btn--ghost btn--lg" href="#estimator">Estimate my savings</a>
-      </div>
-      <p class="hero__note">
-        <svg width="18" height="18" style="color:var(--accent)" aria-hidden="true"><use href="#i-check"/></svg>
-        Free roof assessment &middot; Fixed-price quote within 48 hours &middot; No door-knockers, ever
-      </p>
-
-      <div class="badge-row">
-        <div class="badge">
-          <span class="stars" aria-hidden="true">
-            <svg width="15" height="15" aria-hidden="true"><use href="#i-star"/></svg><svg width="15" height="15" aria-hidden="true"><use href="#i-star"/></svg><svg width="15" height="15" aria-hidden="true"><use href="#i-star"/></svg><svg width="15" height="15" aria-hidden="true"><use href="#i-star"/></svg><svg width="15" height="15" aria-hidden="true"><use href="#i-star"/></svg>
-          </span>
-          <span><strong>4.9 / 5</strong>384 Google reviews</span>
-        </div>
-        <div class="badge">
-          <svg class="badge__icon" aria-hidden="true"><use href="#i-home"/></svg>
-          <span><strong>2,400+</strong>Brisbane rooftops</span>
-        </div>
-        <div class="badge">
-          <svg class="badge__icon" aria-hidden="true"><use href="#i-shield"/></svg>
-          <span><strong>10 years</strong>Workmanship warranty</span>
-        </div>
-      </div>
+<section class="hero" id="hero">
+  <img class="hero__bg" src="/assets/img/photos/hero.jpg" width="2000" height="1333" fetchpriority="high"
+       alt="A contemporary Brisbane home with a long roofline at dusk.">
+  <div class="hero__veil" aria-hidden="true"></div>
+  <div class="wrap hero__inner">
+    <span class="eyebrow" style="color:var(--charcoal-muted)">Upper Mount Gravatt</span>
+    <h1>Solar, installed by <span class="mark">Brisbane locals</span>.</h1>
+    <p class="hero__lede">
+      An electrical contractor that specialises in solar. Our own crews design, install
+      and look after every system — sized to how your household actually uses power.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary btn--lg" href="/contact">Book a free assessment</a>
+      <a class="btn btn--ghost btn--lg" href="#estimator">Estimate my savings</a>
     </div>
+  </div>
+</section>
 
-    <div class="hero__photo">
-      <figure class="figure">
-        <img src="/assets/img/photos/hero.jpg" width="1000" height="1250" fetchpriority="high"
-             alt="An Annergy installer securing solar panels to the roof of a Brisbane home.">
-      </figure>
-      <div class="hero__stat">
-        <span>
-          <b>$2,270</b>
-          <span class="fine">typical first-year saving on a 10&nbsp;kW system</span>
+<section class="section--tight" style="padding-block:clamp(2.5rem,1.5rem+3vw,4rem) 0">
+  <div class="wrap">
+    <div class="badge-row" style="border-top:0;margin-top:0;padding-top:0">
+      <div class="badge">
+        <span class="stars" aria-hidden="true">
+          <svg width="15" height="15" aria-hidden="true"><use href="#i-star"/></svg><svg width="15" height="15" aria-hidden="true"><use href="#i-star"/></svg><svg width="15" height="15" aria-hidden="true"><use href="#i-star"/></svg><svg width="15" height="15" aria-hidden="true"><use href="#i-star"/></svg><svg width="15" height="15" aria-hidden="true"><use href="#i-star"/></svg>
         </span>
+        <span><strong>4.9 / 5</strong>384 Google reviews</span>
+      </div>
+      <div class="badge">
+        <svg class="badge__icon" aria-hidden="true"><use href="#i-home"/></svg>
+        <span><strong>2,400+</strong>Brisbane rooftops</span>
+      </div>
+      <div class="badge">
+        <svg class="badge__icon" aria-hidden="true"><use href="#i-shield"/></svg>
+        <span><strong>10 years</strong>Workmanship warranty</span>
+      </div>
+      <div class="badge">
+        <svg class="badge__icon" aria-hidden="true"><use href="#i-zap"/></svg>
+        <span><strong>$2,270</strong>Typical first-year saving, 10&nbsp;kW system</span>
       </div>
     </div>
   </div>
@@ -324,7 +318,7 @@
       </div>
 
       <div class="calc__panel calc__panel--result reveal" aria-live="polite">
-        <p class="eyebrow" style="color:var(--band-accent)">Indicative result</p>
+        <p class="eyebrow" style="color:var(--copper-tint)">Indicative result</p>
         <dl style="margin:0">
           <div class="result-row result-row--hero">
             <dt>Estimated saving, year one</dt>
@@ -414,7 +408,7 @@
         <span class="pill pill--stone">Wavell Heights</span>
         <h3>13.2 kW on a 1950s tile roof</h3>
         <p>Two-pitch layout with an east and west split so production tracks the family's morning and evening peaks rather than midday export.</p>
-        <div class="case__metrics" style="border-top:1px solid var(--rule);margin-top:auto">
+        <div class="case__metrics" style="margin-top:auto">
           <div class="case__metric"><b>$2,310</b><span>Year-one saving</span></div>
           <div class="case__metric"><b>78%</b><span>Bill reduction</span></div>
         </div>
@@ -427,7 +421,7 @@
         <span class="pill pill--stone">Coorparoo</span>
         <h3>10 kW + 13.5 kWh battery</h3>
         <p>Queenslander with a heritage-sensitive street frontage. Array set entirely on the rear pitch, battery in the under-house storage.</p>
-        <div class="case__metrics" style="border-top:1px solid var(--rule);margin-top:auto">
+        <div class="case__metrics" style="margin-top:auto">
           <div class="case__metric"><b>$2,940</b><span>Year-one saving</span></div>
           <div class="case__metric"><b>0</b><span>Blackout hours in 2025</span></div>
         </div>
@@ -440,7 +434,7 @@
         <span class="pill pill--red">Geebung</span>
         <h3>25 kW on a childcare centre</h3>
         <p>Open 6am to 6pm with heavy air-conditioning, so almost everything the array makes is used on site rather than exported at 5c.</p>
-        <div class="case__metrics" style="border-top:1px solid var(--rule);margin-top:auto">
+        <div class="case__metrics" style="margin-top:auto">
           <div class="case__metric"><b>$8,900</b><span>Annual saving</span></div>
           <div class="case__metric"><b>2.6 yr</b><span>Payback</span></div>
         </div>
@@ -573,8 +567,9 @@
   <div class="wrap">
     <div class="footer__grid">
       <div>
-        <a class="logo logo--plate" href="/" aria-label="Annergy — home">
-          <img src="/assets/img/annergy-logo.png" width="260" height="59" alt="Annergy">
+        <a class="logo" href="/" aria-label="Annergy — home">
+          <img class="logo__mark" src="/assets/img/mark.png" width="101" height="50" alt="">
+          <span class="logo__text">Annergy<b>.</b></span>
         </a>
         <p style="margin-top:1rem;max-width:34ch;font-size:.9375rem">
           Solar and battery installation for Brisbane homes and businesses. Clean Energy Council accredited, locally owned, no subcontracted crews.
@@ -582,7 +577,7 @@
         <ul style="margin-top:1.25rem;display:grid;gap:.625rem;font-size:.9375rem;list-style:none">
           <li><a href="tel:+61416085122" style="display:inline-flex;gap:.5rem;align-items:center"><svg width="16" height="16" aria-hidden="true"><use href="#i-phone"/></svg>0416 085 122</a></li>
           <li><a href="mailto:info@annergy.com.au" style="display:inline-flex;gap:.5rem;align-items:center"><svg width="16" height="16" aria-hidden="true"><use href="#i-mail"/></svg>info@annergy.com.au</a></li>
-          <li style="display:flex;gap:.5rem;align-items:flex-start"><svg width="16" height="16" style="margin-top:.25rem;flex:none" aria-hidden="true"><use href="#i-pin"/></svg><span>Unit 4, 120 Kingsford Smith Drive<br>Hamilton QLD 4007</span></li>
+          <li style="display:flex;gap:.5rem;align-items:flex-start"><svg width="16" height="16" style="margin-top:.25rem;flex:none" aria-hidden="true"><use href="#i-pin"/></svg><span>40 Mascar Street<br>Upper Mount Gravatt QLD 4122</span></li>
         </ul>
       </div>
 
@@ -618,13 +613,13 @@
           <li>Clean Energy Council Approved Retailer</li>
           <li>CEC Accredited Installers &amp; Designers</li>
           <li>QLD Electrical Contractor Licence 00000</li>
-          <li>ABN 00 000 000 000</li>
+          <li>ABN 39 628 044 360</li>
         </ul>
       </div>
     </div>
 
     <div class="footer__bottom">
-      <p>&copy; <span data-year>2026</span> Annergy Solar Pty Ltd. All rights reserved.</p>
+      <p>&copy; <span data-year>2026</span> ANN International Pty Ltd, trading as Annergy. All rights reserved.</p>
       <div class="footer__legal">
         <a href="/privacy">Privacy Policy</a>
         <a href="/terms">Terms of Service</a>

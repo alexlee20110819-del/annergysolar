@@ -6,7 +6,7 @@
 <title>{{TITLE}}</title>
 <meta name="description" content="{{DESCRIPTION}}">
 <link rel="canonical" href="https://annergy.com.au/{{SLUG}}">
-<meta name="theme-color" content="#12181c">
+<meta name="theme-color" content="#241f1c">
 <meta name="robots" content="{{ROBOTS}}">
 
 <meta property="og:type" content="website">
@@ -30,7 +30,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Syne:wght@700;800&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css">
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 {{HEAD_EXTRA}}
@@ -62,14 +62,16 @@
 <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.6 2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.44 6.19 20.5l1.11-6.47L2.6 9.45l6.5-.95z"/></symbol>
 </defs></svg>
 
-<header class="header">
+<header class="header" data-float="{{HEADER_FLOAT}}" id="site-header">
   <div class="wrap header__bar">
     <a class="logo" href="/" aria-label="Annergy — home">
-      <img src="/assets/img/annergy-logo.png" width="260" height="59" alt="Annergy">
+      <img class="logo__mark" src="/assets/img/mark.png" width="101" height="50" alt="">
+      <span class="logo__text">Annergy<b>.</b></span>
     </a>
 
     <nav class="nav" aria-label="Main">
       <ul class="nav__list">
+        <li><a class="nav__link" href="/"{{NAV_HOME}}>Home</a></li>
         <li><a class="nav__link" href="/services"{{NAV_SERVICES}}>Solar &amp; Batteries</a></li>
         <li><a class="nav__link" href="/pricing"{{NAV_PRICING}}>Pricing</a></li>
         <li><a class="nav__link" href="/work"{{NAV_WORK}}>Our Work</a></li>
@@ -90,8 +92,9 @@
     </button>
   </div>
 
-  <div class="mobile-nav wrap" id="mobile-nav" data-mobile-nav data-open="false">
+  <div class="mobile-nav" id="mobile-nav" data-mobile-nav data-open="false">
     <ul class="mobile-nav__list">
+      <li><a href="/">Home</a></li>
       <li><a href="/services">Solar &amp; Batteries</a></li>
       <li><a href="/pricing">Pricing</a></li>
       <li><a href="/work">Our Work</a></li>
@@ -114,8 +117,9 @@
   <div class="wrap">
     <div class="footer__grid">
       <div>
-        <a class="logo logo--plate" href="/" aria-label="Annergy — home">
-          <img src="/assets/img/annergy-logo.png" width="260" height="59" alt="Annergy">
+        <a class="logo" href="/" aria-label="Annergy — home">
+          <img class="logo__mark" src="/assets/img/mark.png" width="101" height="50" alt="">
+          <span class="logo__text">Annergy<b>.</b></span>
         </a>
         <p style="margin-top:1rem;max-width:34ch;font-size:.9375rem">
           Solar and battery installation for Brisbane homes and businesses. Clean Energy Council accredited, locally owned, no subcontracted crews.
@@ -123,7 +127,7 @@
         <ul style="margin-top:1.25rem;display:grid;gap:.625rem;font-size:.9375rem;list-style:none">
           <li><a href="tel:+61416085122" style="display:inline-flex;gap:.5rem;align-items:center"><svg width="16" height="16" aria-hidden="true"><use href="#i-phone"/></svg>0416 085 122</a></li>
           <li><a href="mailto:info@annergy.com.au" style="display:inline-flex;gap:.5rem;align-items:center"><svg width="16" height="16" aria-hidden="true"><use href="#i-mail"/></svg>info@annergy.com.au</a></li>
-          <li style="display:flex;gap:.5rem;align-items:flex-start"><svg width="16" height="16" style="margin-top:.25rem;flex:none" aria-hidden="true"><use href="#i-pin"/></svg><span>Unit 4, 120 Kingsford Smith Drive<br>Hamilton QLD 4007</span></li>
+          <li style="display:flex;gap:.5rem;align-items:flex-start"><svg width="16" height="16" style="margin-top:.25rem;flex:none" aria-hidden="true"><use href="#i-pin"/></svg><span>40 Mascar Street<br>Upper Mount Gravatt QLD 4122</span></li>
         </ul>
       </div>
 
@@ -159,13 +163,13 @@
           <li>Clean Energy Council Approved Retailer</li>
           <li>CEC Accredited Installers &amp; Designers</li>
           <li>QLD Electrical Contractor Licence 00000</li>
-          <li>ABN 00 000 000 000</li>
+          <li>ABN 39 628 044 360</li>
         </ul>
       </div>
     </div>
 
     <div class="footer__bottom">
-      <p>&copy; <span data-year>2026</span> Annergy Solar Pty Ltd. All rights reserved.</p>
+      <p>&copy; <span data-year>2026</span> ANN International Pty Ltd, trading as Annergy. All rights reserved.</p>
       <div class="footer__legal">
         <a href="/privacy">Privacy Policy</a>
         <a href="/terms">Terms of Service</a>

@@ -28,60 +28,90 @@ and icon sprite can't drift between eleven pages.
 build. Front matter drives the title, meta description, canonical URL, sitemap
 priority and JSON-LD.
 
-## Photography — the one thing still outstanding
+## Photography
 
 Every photo on the site is a real `<img>` with `width`/`height` set and a
-written `alt`, currently pointing at a neutral placeholder. **To go live,
-replace the file at the same path with a real photograph of the same aspect
-ratio — no code changes needed.**
+written `alt`. Most are still neutral placeholders — **to go live, replace the
+file at the same path with a real photograph of the same aspect ratio, no code
+changes needed:**
 
 | File (in `assets/img/photos/`) | Size | Ratio | Shot needed |
 |---|---|---|---|
-| `hero.jpg` | 1000×1250 | 4:5 portrait | Installer fitting panels on a Brisbane roof |
 | `residential.jpg` | 1200×900 | 4:3 | Crew on a tile roof, panels going down |
 | `battery.jpg` | 1200×900 | 4:3 | Battery unit mounted in a garage |
 | `commercial.jpg` | 1200×900 | 4:3 | Warehouse rooftop array, wide |
 | `case-wavell-heights.jpg` | 1200×800 | 3:2 | Finished 13.2 kW array on a tile roof |
-| `case-coorparoo.jpg` | 1200×800 | 3:2 | Queenslander rear pitch + Powerwall |
-| `case-rocklea.jpg` | 1200×800 | 3:2 | 99 kW warehouse array from above |
+| `case-coorparoo.jpg` | 1200×800 | 3:2 | Queenslander rear pitch + battery |
+| `case-geebung.jpg` | 1200×800 | 3:2 | 25 kW array on a childcare centre |
 | `team.jpg` | 1400×880 | ~3:2 | The crew in front of a branded ute |
 
-The hero is portrait on purpose — it sits beside the copy on desktop, so a
-vertical shot of someone working on a roof fits far better than a landscape one.
+**`hero.jpg` is the one exception** — a real, licensed photo, not a
+placeholder: [Unsplash photo 1600585154340-be6161a56a0c](https://unsplash.com/photos/be6161a56a0c),
+used under the [Unsplash License](https://unsplash.com/license) (free for
+commercial use, no permission required). It is self-hosted at
+`assets/img/photos/hero.jpg` (2000×1333, re-encoded to ~380 KB) rather than
+hotlinked, both so it survives if Unsplash ever changes the URL and because the
+CSP in `.htaccess` (`img-src 'self' data:`) would block an external image
+outright. It is deliberately excluded from `tools/make-placeholders.py`'s
+manifest, so re-running that script will never overwrite it. Swap it for a real
+photo of your own work whenever you have one — same path, similar aspect ratio.
 
-Update the `alt` text in `src/pages/` when the real photos go in: describe what
-is actually in the frame. After swapping every file, delete
+Update the `alt` text in `src/pages/` when a placeholder is replaced: describe
+what is actually in the frame. Once every placeholder is real, delete
 `tools/make-placeholders.py`.
 
-Shoot notes that will make the site look right: real crews, real Brisbane roofs,
+Shoot notes for the remaining placeholders: real crews, real Brisbane roofs,
 daylight, no stock-looking poses. Photos of your own completed jobs beat
-anything licensed — that is the whole point of this section.
+anything licensed.
 
 ## Brand
 
+Redesigned around a reference mockup the client supplied (editorial,
+architectural, warm paper stock) — a deliberate departure from generic
+"AI-template" defaults, per the project brief.
+
 The logo is the supplied artwork at `assets/img/annergy-logo.png` (260×59,
-transparent). The header uses it directly; the footer places it on a white plate
-because the red mark loses contrast against the dark band. `tools/make-icons.py`
-crops the swoosh out of that same file to build the favicons — re-run it if the
-logo is ever replaced.
+transparent, red). The header and footer use a **cropped icon-only version**,
+`assets/img/mark.png` (the swoosh without the wordmark, transparent
+background), paired with a fresh Syne-set "Annergy." text wordmark — the
+literal logo file's own built-in wordmark uses a different, unrelated typeface
+that would fight the site's type system. `tools/make-icons.py` builds both the
+icon crop and the favicons from the same source PNG — re-run it if the logo is
+ever replaced.
 
 | | |
 |---|---|
-| Typeface | Archivo (400/500/600/700/800) |
-| Ink | `#12181c` |
-| Paper | `#fbf8f2` |
-| Brand red | `#c2222b` — sampled from the logo |
-| Neutrals | warm stone `#ece6da` / `#6b6252` |
+| Display typeface | Syne (700/800) |
+| Text typeface | Source Sans 3 (400/600/700) |
+| Paper | `#f3efe6` |
+| Limestone (alt surface) | `#e4dcce` |
+| Charcoal (ink / dark sections) | `#241f1c` |
+| Copper (accent) | `#b56b42` — decorative fills only, not text |
 
-One accent, used with intention: red is for calls to action, eyebrows, key
-figures and active states. Everything else is ink and warm neutrals.
+One accent, used with intention: copper for calls to action, kickers, and key
+figures. Sharp corners throughout (`--radius: 0`) — no rounded buttons, cards,
+or inputs; that flat-edge quality is a deliberate part of this look, not a
+placeholder for one that got missed.
 
-Text and focus rings use the **semantic** tokens (`--accent`, `--accent-deep`,
-`--danger`, `--focus`, `--band-accent`), which flip between the light and dark
-palettes. The raw ramp (`--red`, `--stone-100`) is for fills. `--band` /
-`--band-text` are the deliberately-inverted dark sections; they lift above the
-page in dark mode rather than flipping, so they never become light-on-light.
-Every foreground/background pair was checked at WCAG AA in both themes.
+**No dark mode.** The reference mockup is a fixed light aesthetic with
+intentionally-dark *sections* (the hero photo, the CTA bands) rather than an
+OS-preference toggle — bolting on `prefers-color-scheme` support would fight
+that look rather than serve it, so it was left out on purpose.
+
+The raw copper value fails WCAG AA as text (it's a fill colour); text and focus
+rings use the **semantic** tokens instead:
+
+- `--copper-deep` (`#8b4a22`) — copper as text on paper/limestone/white: 5.9–6.8:1
+- `--copper-tint` (`#dc9569`) — copper as text/accent on charcoal or the hero
+  photo: 6.6:1
+- `--border` (`#8f826d`) — actual input/control borders, kept separate from the
+  lighter `--line`, which is decorative-only and doesn't meet the 3:1 a real UI
+  boundary needs
+
+Every foreground/background pair was checked at WCAG AA, including text sitting
+over the hero photo — the veil gradient there is intentionally strong and wide,
+with a text-shadow as a second line of defence, so headline text stays legible
+regardless of what's directly behind it in the photo.
 
 The OG card is generated from `assets/img/og.svg` (which embeds the logo):
 
@@ -168,15 +198,17 @@ Behaviour verified end to end:
 ## Live details
 
 Confirmed and in place: **0416 085 122** (`tel:+61416085122`) and
-**info@annergy.com.au**.
+**info@annergy.com.au**, at the bare domain **annergy.com.au** (not `www` — that
+subdomain currently points elsewhere; see the DNS note further down if that's
+ever revisited).
 
-Two things I inferred rather than were told — check them:
-
-- [ ] **Domain** — set to `www.annergy.com.au` throughout (canonicals, OG tags,
-      `sitemap.xml`, `robots.txt`), inferred from the email address.
-- [ ] **Name** — page titles and schema say "Annergy Solar" (better for search);
-      the logo and body copy say "Annergy". Change the titles if you'd rather be
-      "Annergy" everywhere.
+- **Legal entity** — ANN International Pty Ltd, trading as Annergy.
+  ABN 39 628 044 360 / ACN 628 044 360, GST registered since 6 November 2019.
+  Page titles keep saying "Annergy Solar" (reads better for search); the logo,
+  nav and body copy say "Annergy" — that split is deliberate, not an
+  inconsistency to fix.
+- **Address** — 40 Mascar Street, Upper Mount Gravatt QLD 4122. Used in the
+  footer, the Contact page, and the LocalBusiness schema on the home page.
 
 ### Confirmed business details
 
@@ -197,8 +229,8 @@ plus shorter mentions on the home and pricing pages. Add or drop a brand there f
 
 ### Still placeholder, and must be replaced
 
-- [ ] Address `Unit 4, 120 Kingsford Smith Drive, Hamilton QLD 4007`
-- [ ] `ABN 00 000 000 000` and `QLD Electrical Contractor Licence 00000`
+- [ ] `QLD Electrical Contractor Licence 00000` — address and ABN are real now
+      (see Live details above); this one is still a placeholder
 - [ ] Trading hours (Mon–Fri 7–5, Sat 8–1) in the footer and schema
 - [ ] Stats: 2,400+ installs, 18.4 MW, 4.9/5 from 384 reviews, 22 staff, since 2013
 - [ ] Prices: $5,290 / $7,890 / $9,690 and the $8,600 battery

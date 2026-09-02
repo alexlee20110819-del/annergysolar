@@ -32,6 +32,27 @@
     });
   }
 
+  /* ---------- Floating header (home page only) ----------
+     On the home page the header rides transparent over the hero photo, then
+     solidifies once the hero has mostly scrolled past. Every other page sets
+     data-float="false" and the header just stays normally solid — nothing
+     here runs for them.
+  */
+  var header = document.getElementById("site-header");
+  var hero = document.querySelector(".hero");
+  if (header && hero && header.getAttribute("data-float") === "true") {
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        function (entries) {
+          header.classList.toggle("is-solid", !entries[0].isIntersecting);
+        },
+        { rootMargin: "-88% 0px 0px 0px", threshold: 0 }
+      ).observe(hero);
+    } else {
+      header.classList.add("is-solid"); // no IO support: fail to the readable state
+    }
+  }
+
   /* ---------- Reveal on scroll ----------
      A scroll sweep rather than IntersectionObserver: an anchor jump can skip an
      element from below the fold to above it without ever crossing a threshold,

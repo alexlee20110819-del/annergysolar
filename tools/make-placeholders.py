@@ -19,7 +19,6 @@ OUT = pathlib.Path("assets/img/photos")
 
 # slug, width, height, subject brief, where it appears
 MANIFEST = [
-    ("hero",                1000, 1250, "Installer fitting panels on a Brisbane roof", "Home hero (portrait 4:5)"),
     ("residential",         1200, 900, "Crew on a tile roof, panels going down",      "Services — residential"),
     ("battery",             1200, 900, "Battery unit mounted in a garage",            "Services — battery"),
     ("commercial",          1200, 900, "Warehouse rooftop array, wide shot",          "Services — commercial"),
@@ -48,19 +47,20 @@ SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {S} {S}" width="{S
 </svg>"""
 
 
-def build(slug, w, h, subject):
+def build(slug, w, h, subject, label_y=0.62):
     s = max(w, h)
     oy = (s - h) // 2
     scale = w / 1200
     gw, gh = int(150 * scale), int(108 * scale)
+    icon_y = max(label_y - 0.28, 0.12)
     svg = SVG.format(
         S=s, W=w, H=h, W2=w - 2, H2=h - 2, oy=oy,
-        cx=w // 2 - gw // 2, cy=int(h * 0.34),
+        cx=w // 2 - gw // 2, cy=int(h * icon_y),
         sw=max(2, int(4 * scale)),
         gx=0, gy=0, gw=gw, gh=gh, gr=int(10 * scale),
         lx=int(18 * scale), ly=int(88 * scale), lw=int(52 * scale), lh=int(34 * scale),
         ccx=int(gw * 0.68), ccy=int(gh * 0.38), cr=int(20 * scale),
-        tx=w // 2, ty=int(h * 0.62), ty2=int(h * 0.62) + int(38 * scale),
+        tx=w // 2, ty=int(h * label_y), ty2=int(h * label_y) + int(38 * scale),
         fs=int(34 * scale), fs2=int(24 * scale),
         subject=subject, slug=slug)
 
@@ -80,10 +80,16 @@ def build(slug, w, h, subject):
                        capture_output=True, check=True)
 
 
+# Full-bleed heroes carry real overlaid copy at the BOTTOM of the frame
+# (see the .hero component) — keep the placeholder's own caption near the
+# top so the two don't collide.
+LABEL_Y = {}  # per-slug overrides, if a future placeholder needs one
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for slug, w, h, subject, where in MANIFEST:
-        build(slug, w, h, subject)
+        build(slug, w, h, subject, LABEL_Y.get(slug, 0.62))
         size = (OUT / f"{slug}.jpg").stat().st_size // 1024
         print(f"  {slug + '.jpg':<28} {w}x{h:<5} {size:>3} KB   {where}")
 

@@ -17,7 +17,7 @@ PAGES = ROOT / "src" / "pages"
 BASE = (ROOT / "src" / "partials" / "base.html").read_text()
 SITE = "https://annergy.com.au"
 
-NAV_KEYS = ["services", "pricing", "work", "about", "faq"]
+NAV_KEYS = ["home", "services", "pricing", "work", "about", "faq"]
 
 
 def parse(path):
@@ -43,6 +43,7 @@ def render(meta, body):
         "{{SLUG}}": url_path(meta["slug"]),
         "{{ROBOTS}}": meta.get("robots", "index, follow"),
         "{{HEAD_EXTRA}}": meta.get("head", ""),
+        "{{HEADER_FLOAT}}": "true" if meta.get("headerFloat") else "false",
         "{{SCHEMA}}": json.dumps(schema, separators=(",", ":")) if schema else "{}",
         "{{BODY}}": body.strip(),
     }
