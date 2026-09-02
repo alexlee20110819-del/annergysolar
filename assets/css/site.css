@@ -134,7 +134,7 @@ button { font: inherit; cursor: pointer; }
 .fine { font-size: var(--step--1); color: var(--text-muted); line-height: 1.55; }
 .mark { color: var(--copper-deep); }
 .section--ink .mark { color: var(--copper-tint); }
-.hero .mark { text-shadow: 0 2px 24px rgba(0,0,0,.45); }
+.hero .mark { color: inherit; }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -149,6 +149,8 @@ button { font: inherit; cursor: pointer; }
 .btn svg { flex: none; }
 .btn--primary { background: var(--copper); color: var(--ink); }
 .btn--primary:hover { background: var(--copper-deep); color: #fff; }
+.btn--cream { background: var(--limestone); color: var(--charcoal); }
+.btn--cream:hover { background: var(--paper); }
 .btn--ink { background: var(--charcoal); color: var(--paper); }
 .btn--ink:hover { background: var(--ink); }
 .btn--ghost { border-color: var(--border); color: var(--text); background: transparent; }
@@ -265,7 +267,7 @@ button { font: inherit; cursor: pointer; }
   position: relative; min-height: 100dvh; display: flex; flex-direction: column;
   justify-content: flex-end; padding-block: 8rem clamp(3rem, 5vw, 5rem);
 }
-.hero h1 { max-width: 12ch; margin-top: var(--s-4); text-shadow: 0 2px 24px rgba(0,0,0,.35); }
+.hero h1 { max-width: 14ch; margin-top: var(--s-4); text-shadow: 0 2px 24px rgba(0,0,0,.35); }
 .hero__lede { margin-top: var(--s-5); max-width: 30rem; color: rgba(243,239,230,.86); font-size: var(--step-1); }
 .hero__actions { margin-top: var(--s-6); display: flex; flex-wrap: wrap; gap: var(--s-3); }
 .hero__note { margin-top: var(--s-4); display: flex; align-items: center; gap: .5rem; font-size: var(--step--1); color: rgba(243,239,230,.68); }
