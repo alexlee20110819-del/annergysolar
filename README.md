@@ -51,7 +51,7 @@ placeholder: [Unsplash photo 1613665813446-82a78c468a1d](https://unsplash.com/ph
 [Unsplash License](https://unsplash.com/license) (free for commercial use, no
 permission required). It is self-hosted at `assets/img/photos/hero.jpg`
 (2000×1353, re-encoded to ~240 KB) rather than hotlinked, both so it survives if
-Unsplash ever changes the URL and because the CSP in `.htaccess`
+Unsplash ever changes the URL and because the CSP in `vercel.json`
 (`img-src 'self' data:`) would block an external image outright.
 
 The hero veil is weighted to the bottom-left, where the copy sits, so that block
@@ -144,80 +144,53 @@ The OG card is generated from `assets/img/og.svg` (which embeds the logo):
     sips -c 630 1200 /tmp/og.svg.png --out /tmp/crop.png
     sips -s format jpeg -s formatOptions 84 /tmp/crop.png --out assets/img/og.jpg
 
-## Deploying to HostPapa (cPanel), plain Apache hosting
+## Deploying to Vercel
 
-This is the version currently in use: no Vercel, no Node. `.htaccess` does the
-clean URLs and headers that `vercel.json` did on Vercel, and `api/quote.php`
-replaces the Node serverless function. Both were tested against a real local
-Apache 2.4 instance (mod_rewrite, mod_headers, mod_expires, mod_deflate) before
-shipping, not just eyeballed.
-
-**Upload, via cPanel → File Manager:**
-
-1. Run `python3 build.py` locally first, so the root-level `.html` files are
-   current.
-2. Select every file and folder in the project root **except** `src/`,
-   `serve.py`, `build.py`, `tools/`, `README.md`, `.git/`, `.gitignore`. those are build-time/dev only and don't need to go on the server.
-   That leaves: all the `.html` files, `.htaccess`, `robots.txt`,
-   `sitemap.xml`, `site.webmanifest`, `assets/`, `api/`.
-3. Zip them, upload the zip into `public_html` via File Manager, then use
-   File Manager's **Extract** so the files land directly in `public_html`
-   (not inside a subfolder).
-4. Visit the domain. it should serve the real site immediately, no DNS
-   change needed, since this is the same server your domain already
-   resolves to.
-
-**The contact form needs one thing confirmed:** `api/quote.php` sends via
-PHP's `mail()` to `info@annergy.com.au` from `website@annergy.com.au`. Check
-that `website@annergy.com.au` is a real mailbox or alias on this hosting
-account. some mail setups reject a `From:` address that doesn't exist,
-routing it to spam or rejecting the send outright. If leads stop arriving,
-check the inbox's spam folder first, then the PHP error log (cPanel → Errors,
-or `~/logs/`). every lead is written there before a send is attempted, so
-nothing is silently lost even if delivery fails.
-
-## Deploying to Vercel (alternative. not the current path)
-
-Push to Vercel. `vercel.json` sets clean URLs, immutable caching on `/assets`,
-a CSP and the other security headers. `404.html` is served automatically.
+This is the live path. `vercel.json` handles clean URLs, the security headers
+and the caching split; `api/quote.js` is the contact form handler.
 
 ```bash
 npx vercel --prod
 ```
 
-### The quote form. READ THIS BEFORE LAUNCH
+**Only one handler may live in `api/`.** Vercel routes by filename without the
+extension, so `api/quote.js` and `api/quote.php` both map to `/api/quote` and
+the deploy is rejected with a path-conflict error. The PHP handler and the
+Apache `.htaccess` were removed when the site moved to Vercel; if you ever move
+back to cPanel hosting, recover them from git history (they were last present
+at commit `931fdc2`) rather than writing them again.
 
-The form asks for four things: name, phone and postcode (required) plus an
-optional email. Everything else is asked on the call.
+### The quote form needs two environment variables
 
 `api/quote.js` validates server-side, drops honeypot spam, and emails the lead.
-**It needs two environment variables in the Vercel project or it will not send:**
+It will not send until both of these are set in the Vercel project:
 
     RESEND_API_KEY   an API key from resend.com
     QUOTE_INBOX      where leads land, e.g. info@annergy.com.au
 
-You also need to verify `annergy.com.au` as a sending domain in Resend, because
+You also need to verify `annergy.com.au` as a sending domain in Resend, since
 the function sends `from: website@annergy.com.au`.
 
-Until both variables are set, the handler returns **503** and tells the visitor
-to phone instead. That is deliberate. It would be easy to return a cheerful
-"thanks, we got it" and quietly drop the lead into a log file, and that is the
-single worst thing a quote form on a trades site can do. nobody notices for
-weeks. Every lead is also written to the error log, so if delivery ever breaks
-the enquiry is still recoverable from the Vercel function logs.
-
-Using a different provider? Replace the `deliver()` function; nothing else
-changes.
+Until both are set the handler returns **503** and tells the visitor to phone.
+That is deliberate. Returning a cheerful "thanks, we got it" and dropping the
+lead is the worst thing a quote form on a trades site can do, because nobody
+notices for weeks. Every lead is also written to the error log first, so a
+failed send is still recoverable from the Vercel function logs.
 
 Behaviour verified end to end:
 
 | Situation | Visitor sees |
 |---|---|
-| Not configured (no env vars) | 503. "call 0416 085 122 instead" |
-| Provider rejects the send | 502. same message, lead written to the log |
-| Missing or invalid fields | 400. the specific fields highlighted |
+| Not configured (no env vars) | 503, "call 0416 085 122 instead" |
+| Provider rejects the send | 502, same message, lead written to the log |
+| Missing or invalid fields | 400, the specific fields highlighted |
 | Wrong method / honeypot filled | 405 / silent 200 |
-| Configured and sending | "Thanks. your request is in", form clears |
+| Configured and sending | "Thanks, your request is in", form clears |
+
+The form also carries the visitor's intent. Specific CTAs link to
+`/contact?enquiry=commercial` (or `battery`, `ev`, `service`, `question`),
+which pre-selects the matching option and puts it in the email subject, so
+leads are triageable from the inbox list without opening them.
 
 ## Live details
 
