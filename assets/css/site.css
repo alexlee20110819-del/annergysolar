@@ -81,7 +81,11 @@ body {
   overflow-x: hidden;
 }
 img, svg, video { max-width: 100%; height: auto; display: block; }
-h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 800; line-height: 1.06; letter-spacing: -.03em; text-wrap: balance; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; }
+/* Display face: only where it is large, short, and doing a job. */
+h1, h2 { font-family: var(--font-display); font-weight: 800; line-height: 1.06; letter-spacing: -.03em; }
+/* Smaller headings are read, not looked at — set them in the text face. */
+h3, h4 { font-family: var(--font-text); font-weight: 700; letter-spacing: -.01em; }
 h1 { font-size: var(--step-5); }
 h2 { font-size: var(--step-4); }
 h3 { font-size: var(--step-2); }
@@ -355,7 +359,8 @@ a.card:hover, .card--link:hover { border-color: var(--border); box-shadow: var(-
 .tick-list svg { margin-top: .3rem; color: var(--copper-deep); flex: none; }
 .card--dark .tick-list svg, .card--accent .tick-list svg, .section--ink .tick-list svg { color: var(--copper-tint); }
 
-/* ---------- Stats / facts ---------- */
+/* ---------- Stats / facts ----------
+   Numerals keep the display face: short, large, and legible in it. */
 .stats { display: grid; gap: var(--s-5); }
 @media (min-width: 620px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 940px) { .stats { grid-template-columns: repeat(4, 1fr); } }
@@ -443,7 +448,7 @@ input[type="range"] { width: 100%; accent-color: var(--copper-deep); height: 32p
 @media (min-width: 760px) { .quotes { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1060px) { .quotes { grid-template-columns: repeat(3, 1fr); } }
 .quote { display: flex; flex-direction: column; gap: var(--s-4); }
-.quote blockquote { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); line-height: 1.4; letter-spacing: -.01em; }
+.quote blockquote { margin: 0; font-family: var(--font-text); font-weight: 600; font-size: var(--step-1); line-height: 1.5; letter-spacing: -.005em; }
 .quote figcaption { margin-top: auto; display: flex; align-items: center; gap: .75rem; }
 .avatar {
   width: 42px; height: 42px; border-radius: 50%; flex: none; display: grid; place-items: center;
@@ -468,8 +473,8 @@ input[type="range"] { width: 100%; accent-color: var(--copper-deep); height: 32p
 .faq summary {
   list-style: none; cursor: pointer; padding-block: var(--s-5);
   display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-4);
-  font-family: var(--font-display); font-size: var(--step-1); font-weight: 800;
-  letter-spacing: -.01em; line-height: 1.35; min-height: 48px;
+  font-family: var(--font-text); font-size: var(--step-1); font-weight: 700;
+  letter-spacing: -.005em; line-height: 1.4; min-height: 48px;
 }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary:hover { color: var(--copper-deep); }
@@ -616,4 +621,43 @@ input[type="range"] { width: 100%; accent-color: var(--copper-deep); height: 32p
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal.is-in { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* ---------- Bill before/after bar (savings estimator) ----------
+   Two dollar figures ask the reader to do the comparison themselves. Two
+   bars do it for them. Decorative only — aria-hidden, with the same numbers
+   available as text in the result rows above.
+   ------------------------------------------------------------------------ */
+.billbar { display: grid; gap: .625rem; padding-block: var(--s-4); border-bottom: 1px solid rgba(243,239,230,.18); }
+.billbar__row { display: grid; grid-template-columns: 4.75rem 1fr auto; align-items: center; gap: .75rem; }
+.billbar__label { font-size: var(--step--1); color: var(--charcoal-muted); }
+.billbar__track { height: 10px; border-radius: var(--radius-pill); background: rgba(243,239,230,.12); overflow: hidden; }
+.billbar__fill { display: block; height: 100%; border-radius: var(--radius-pill); transition: width .45s cubic-bezier(.2,.6,.2,1); }
+.billbar__fill--now   { background: rgba(243,239,230,.38); }
+.billbar__fill--after { background: var(--copper-tint); }
+.billbar__val { font-family: var(--font-display); font-weight: 800; font-size: 1rem; letter-spacing: -.02em; min-width: 3.5rem; text-align: right; }
+@media (prefers-reduced-motion: reduce) { .billbar__fill { transition: none; } }
+
+/* ---------- Cross-document page transitions ----------
+   Native View Transitions: the browser cross-fades between pages on its own,
+   no JS and no SPA router. Browsers without support simply navigate as
+   normal — there is no fallback to write and nothing to break.
+   ------------------------------------------------------------------------ */
+@view-transition { navigation: auto; }
+
+::view-transition-old(root) { animation: vt-out .22s cubic-bezier(.4,0,1,1) both; }
+::view-transition-new(root) { animation: vt-in .32s cubic-bezier(0,0,.2,1) both; }
+
+@keyframes vt-out { to   { opacity: 0; transform: translateY(-8px); } }
+@keyframes vt-in  { from { opacity: 0; transform: translateY(10px); } }
+
+/* The header is continuous between pages — let it stay put rather than
+   sliding with the body, so navigation feels like the page changing under a
+   fixed chrome rather than the whole window lurching. */
+.header { view-transition-name: site-header; }
+::view-transition-group(site-header) { animation-duration: .22s; }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root),
+  ::view-transition-group(site-header) { animation: none; }
 }

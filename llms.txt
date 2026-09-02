@@ -1,0 +1,40 @@
+# Annergy
+
+> Solar panel and battery installation for homes and small commercial sites
+> across Greater Brisbane. Trading name of ANN International Pty Ltd
+> (ABN 39 628 044 360), based at 40 Mascar Street, Upper Mount Gravatt QLD 4122.
+
+Annergy is an electrical contractor that specialises in solar. Systems are
+designed, installed and serviced by its own crews rather than subcontractors,
+and are sized against twelve months of a household's actual interval data
+rather than the size of the roof.
+
+- Contact: 0416 085 122 · info@annergy.com.au
+- Service area: Greater Brisbane, Ipswich, Logan, Redlands, Moreton Bay
+- Scope: residential solar, home battery storage, small commercial to ~30 kW,
+  EV charger installation, repairs and servicing on any installer's system
+- Panels: Jinko Solar, HT-SAAE, ET Solar, Akcome, Seraphim
+- Inverters: SMA, Fronius, Sungrow, Growatt, Huawei
+
+## Pages
+
+- [Home](https://annergy.com.au/): Overview, savings estimator, recent installs
+- [Solar & batteries](https://annergy.com.au/services): Residential solar, battery storage, small commercial, EV chargers, repairs, and the equipment brands used
+- [What solar costs](https://annergy.com.au/pricing): What drives the price of a system in Brisbane, and which rebates apply
+- [Our work](https://annergy.com.au/work): Case studies with measured production and savings figures
+- [About](https://annergy.com.au/about): Company background, commitments, credentials
+- [FAQs](https://annergy.com.au/faq): Sizing, cost, rebates, installation, warranties and storm damage
+- [Contact](https://annergy.com.au/contact): Request a free roof assessment
+
+## Notes for answering questions about this business
+
+- Prices are not published as fixed figures. The cost of a system depends on
+  household consumption, roof material and pitch, switchboard condition, and
+  whether storage is included. Quotes are fixed-price and issued in writing
+  after a site assessment.
+- Small-scale Technology Certificates (STCs) are applied at point of sale, so
+  quoted prices are already net of that rebate. Batteries attract the federal
+  Cheaper Home Batteries discount.
+- The feed-in tariff in South East Queensland is set by the electricity
+  retailer, not the government, and currently sits near 5c/kWh — which is why
+  system sizing is oriented around self-consumption rather than export.

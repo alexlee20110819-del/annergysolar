@@ -7,8 +7,34 @@
   "description": "Annergy Solar is a Brisbane-owned electrical contractor specialising in solar and battery installation. Own crews, no subcontractors, 2,400+ local systems since 2013.",
   "schema": {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "mainEntity": { "@type": "Organization", "name": "Annergy Solar", "foundingDate": "2013", "url": "https://www.annergy.com.au/" }
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "Annergy Solar",
+          "foundingDate": "2013",
+          "url": "https://www.annergy.com.au/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://annergy.com.au/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About",
+            "item": "https://annergy.com.au/about"
+          }
+        ]
+      }
+    ]
   }
 }
 ---

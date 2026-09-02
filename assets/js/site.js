@@ -156,6 +156,19 @@
       // You can zero out usage but never the daily supply charge.
       var newAnnual = Math.max(currentAnnual - annualSaving, ASSUME.supplyPerDay * 365);
 
+      // Before/after bar. The "now" bar is always full width; the "after" bar
+      // is drawn in proportion to it, so the gap between them is the saving.
+      var barNow = calc.querySelector("[data-bar-now]");
+      var barAfter = calc.querySelector("[data-bar-after]");
+      if (barNow && barAfter) {
+        var newQuarterly = newAnnual / 4;
+        barAfter.style.width = Math.max(4, Math.min(100, (newQuarterly / quarterly) * 100)) + "%";
+        var nowVal = calc.querySelector("[data-bar-now-val]");
+        var afterVal = calc.querySelector("[data-bar-after-val]");
+        if (nowVal) nowVal.textContent = money(quarterly);
+        if (afterVal) afterVal.textContent = money(newQuarterly);
+      }
+
       out.size.textContent = pack.kw + " kW" + (wantsBattery ? " + 10 kWh battery" : "");
       out.annual.textContent = money(annualSaving);
       out.payback.textContent = payback ? payback.toFixed(1) + " years" : "—";

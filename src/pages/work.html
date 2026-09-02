@@ -4,12 +4,33 @@
   "nav": "work",
   "priority": "0.8",
   "title": "Recent Solar Installs in Brisbane | Annergy Solar Case Studies",
-  "description": "Real Brisbane solar and battery installations with production data, savings and payback figures — from a Wavell Heights tile roof to a 25kW childcare centre at Geebung.",
+  "description": "Real Brisbane solar and battery installations with production data, savings and payback figures \u2014 from a Wavell Heights tile roof to a 25kW childcare centre at Geebung.",
   "schema": {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Annergy Solar case studies",
-    "description": "Recent solar and battery installations across Greater Brisbane."
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "name": "Annergy Solar case studies",
+        "description": "Recent solar and battery installations across Greater Brisbane."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://annergy.com.au/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Our Work",
+            "item": "https://annergy.com.au/work"
+          }
+        ]
+      }
+    ]
   }
 }
 ---

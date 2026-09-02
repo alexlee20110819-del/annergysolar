@@ -7,21 +7,79 @@
   "description": "Residential solar, home batteries, commercial arrays, EV chargers and solar repairs across Greater Brisbane. CEC accredited, own crews, 10-year workmanship warranty.",
   "schema": {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Solar panel and battery installation",
-    "provider": { "@type": "LocalBusiness", "name": "Annergy Solar", "@id": "https://www.annergy.com.au/#business" },
-    "areaServed": { "@type": "City", "name": "Brisbane" },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Solar and battery services",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Residential solar installation" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Home battery storage" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Small commercial solar up to 30 kW" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "EV charger installation" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Solar repairs and servicing" } }
-      ]
-    }
+    "@graph": [
+      {
+        "@type": "Service",
+        "serviceType": "Solar panel and battery installation",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Annergy Solar",
+          "@id": "https://www.annergy.com.au/#business"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Brisbane"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Solar and battery services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Residential solar installation"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Home battery storage"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Small commercial solar up to 30 kW"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "EV charger installation"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Solar repairs and servicing"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://annergy.com.au/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Solar & Batteries",
+            "item": "https://annergy.com.au/services"
+          }
+        ]
+      }
+    ]
   }
 }
 ---

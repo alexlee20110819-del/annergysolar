@@ -88,8 +88,8 @@ ever replaced.
 
 | | |
 |---|---|
-| Display typeface | Syne (700/800) |
-| Text typeface | Source Sans 3 (400/600/700) |
+| Display typeface | Syne (700/800) — **h1/h2 and numerals only** |
+| Text typeface | Source Sans 3 (400/600/700) — everything you read |
 | Paper | `#f3efe6` |
 | Limestone (alt surface) | `#e4dcce` |
 | Charcoal (ink / dark sections) | `#241f1c` |
@@ -97,6 +97,12 @@ ever replaced.
 
 One accent, used with intention: copper for calls to action, kickers, and key
 figures.
+
+**Syne is deliberately restricted.** It reads well large, short and bold, and
+turns to mush at paragraph-heading sizes — so it is confined to `h1`/`h2`, big
+numerals (stats, prices, payback figures) and the wordmark. `h3`/`h4`, FAQ
+questions and pull-quotes are set in Source Sans 3. If you add a component with
+a heading that is a full sentence, it belongs in the text face.
 
 Corners are softened to echo the logo's curves, on a four-step scale that every
 component routes through — no component hardcodes a radius, so the whole feel is

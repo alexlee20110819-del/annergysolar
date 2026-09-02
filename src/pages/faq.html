@@ -7,14 +7,77 @@
   "description": "Straight answers on Brisbane solar: system sizing, battery payback, STC and battery rebates, Energex approvals, warranties, storms, tile roofs and feed-in tariffs.",
   "schema": {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "What size solar system do I need in Brisbane?", "acceptedAnswer": { "@type": "Answer", "text": "Most Brisbane homes land between 6.6 kW and 13.2 kW. The right size depends on how much power you use and when you use it, not on the size of your roof. We read twelve months of your interval data from Energex before recommending a size." } },
-      { "@type": "Question", "name": "How much does solar cost in Brisbane?", "acceptedAnswer": { "@type": "Answer", "text": "Indicatively, 6.6 kW from $5,290, 10 kW from $7,890 and 13.2 kW from $9,690 fully installed after the STC rebate. Switchboard upgrades, tile roofs and long cable runs can change the price, and we identify those at the free assessment." } },
-      { "@type": "Question", "name": "Is a home battery worth it in Brisbane?", "acceptedAnswer": { "@type": "Answer", "text": "With the federal Cheaper Home Batteries discount and feed-in tariffs near 5c/kWh, payback on a 10 kWh battery typically lands between 7 and 10 years for a household using 20 kWh or more per day with a strong evening peak. For low evening users it does not yet stack up." } },
-      { "@type": "Question", "name": "What rebates are available for solar in Queensland?", "acceptedAnswer": { "@type": "Answer", "text": "Small-scale Technology Certificates (STCs) reduce the up-front price of every accredited solar install, worth roughly $3,000 on a 10 kW Brisbane system. Batteries attract the federal Cheaper Home Batteries discount of around 30 per cent. Both are applied at the point of sale by the installer." } },
-      { "@type": "Question", "name": "How long does a solar installation take?", "acceptedAnswer": { "@type": "Answer", "text": "Most residential installations are completed in a single day, with power off for two to four hours while switchboard work is carried out. Battery installations usually take a day and a half. The median time from signed quote to switch-on is 11 days." } },
-      { "@type": "Question", "name": "Will solar panels survive a Brisbane hailstorm?", "acceptedAnswer": { "@type": "Answer", "text": "Panels we install are certified to withstand 25 mm hail at 83 km/h. Severe supercell hail can exceed that, which is why we photograph and document every array at commissioning so insurance claims are straightforward." } }
+    "@graph": [
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What size solar system do I need in Brisbane?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most Brisbane homes land between 6.6 kW and 13.2 kW. The right size depends on how much power you use and when you use it, not on the size of your roof. We read twelve months of your interval data from Energex before recommending a size."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does solar cost in Brisbane?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "There is no honest flat answer before someone has seen your roof. The price is driven by how much power you actually use, your roof material and pitch, whether the switchboard needs upgrading, and whether you add a battery. The STC rebate comes off the invoice up front. We identify everything that moves the number at the free assessment and put it in a fixed-price quote."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is a home battery worth it in Brisbane?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "With the federal Cheaper Home Batteries discount and feed-in tariffs near 5c/kWh, payback on a 10 kWh battery typically lands between 7 and 10 years for a household using 20 kWh or more per day with a strong evening peak. For low evening users it does not yet stack up."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What rebates are available for solar in Queensland?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Small-scale Technology Certificates (STCs) reduce the up-front price of every accredited solar install, worth roughly $3,000 on a 10 kW Brisbane system. Batteries attract the federal Cheaper Home Batteries discount of around 30 per cent. Both are applied at the point of sale by the installer."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does a solar installation take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most residential installations are completed in a single day, with power off for two to four hours while switchboard work is carried out. Battery installations usually take a day and a half. The median time from signed quote to switch-on is 11 days."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will solar panels survive a Brisbane hailstorm?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Panels we install are certified to withstand 25 mm hail at 83 km/h. Severe supercell hail can exceed that, which is why we photograph and document every array at commissioning so insurance claims are straightforward."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://annergy.com.au/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "FAQs",
+            "item": "https://annergy.com.au/faq"
+          }
+        ]
+      }
     ]
   }
 }
@@ -78,7 +141,7 @@
       <details>
         <summary>What does solar cost in Brisbane?<span class="faq__sign" aria-hidden="true"></span></summary>
         <div class="faq__body">
-          <p>Our indicative fully-installed prices after the STC rebate are $5,290 for 6.6&nbsp;kW, $7,890 for 10&nbsp;kW and $9,690 for 13.2&nbsp;kW. Full detail is on the <a href="/pricing">pricing page</a>.</p>
+          <p>There is no honest flat answer before someone has seen your roof — anyone quoting one is guessing. Four things drive it: how much power you actually use, your roof material and pitch, whether the switchboard needs upgrading, and whether you add a battery. The <a href="/pricing">pricing page</a> breaks each one down.</p>
           <p>What moves the number: switchboard or meter upgrades, two-storey or steep-pitch roofs, tile flashing, long cable runs, and asbestos-clad eaves. All of it is identified at the assessment and written into the quote.</p>
         </div>
       </details>

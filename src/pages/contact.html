@@ -7,22 +7,43 @@
   "description": "Book a free roof assessment with Annergy Solar. Fixed-price quote within 48 hours, no obligation. Call 0416 085 122 or send your details and last power bill.",
   "schema": {
     "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "mainEntity": {
-      "@type": "LocalBusiness",
-      "name": "Annergy Solar",
-      "@id": "https://www.annergy.com.au/#business",
-      "telephone": "+61-416-085-122",
-      "email": "info@annergy.com.au",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "40 Mascar Street",
-        "addressLocality": "Upper Mount Gravatt",
-        "addressRegion": "QLD",
-        "postalCode": "4122",
-        "addressCountry": "AU"
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "mainEntity": {
+          "@type": "LocalBusiness",
+          "name": "Annergy Solar",
+          "@id": "https://www.annergy.com.au/#business",
+          "telephone": "+61-416-085-122",
+          "email": "info@annergy.com.au",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "40 Mascar Street",
+            "addressLocality": "Upper Mount Gravatt",
+            "addressRegion": "QLD",
+            "postalCode": "4122",
+            "addressCountry": "AU"
+          }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://annergy.com.au/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Contact",
+            "item": "https://annergy.com.au/contact"
+          }
+        ]
       }
-    }
+    ]
   }
 }
 ---
@@ -122,23 +143,12 @@
 
         <div class="card card--dark">
           <h3 style="font-size:var(--step-1)">What happens next</h3>
-          <ol class="tick-list" style="margin-top:1rem;list-style:none">
-            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check"/></svg>We call within one business day to book a time that suits</li>
-            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check"/></svg>We request your 12-month interval data from Energex</li>
-            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check"/></svg>40-minute site visit: roof, switchboard, meter, shading</li>
-            <li><svg width="18" height="18" aria-hidden="true"><use href="#i-check"/></svg>Fixed-price quote in writing within 48 hours</li>
-          </ol>
-          <p class="fine" style="color:#b8c1c6;margin-top:1.25rem">
-            Your quote stays valid for 30 days at the quoted price. There is no discount that
-            disappears if you think it over.
+          <p style="margin-top:.5rem">
+            We call within one business day, visit for about 40 minutes, and send a
+            fixed-price quote in writing within 48 hours.
           </p>
-        </div>
-
-        <div class="card" style="background:var(--surface-alt)">
-          <h3 style="font-size:var(--step-1)">Already a customer?</h3>
-          <p style="color:var(--text-muted)">
-            Service requests, warranty claims and monitoring questions all go through the same number.
-            Have your address handy and we'll pull up your install record and commissioning photos.
+          <p class="fine" style="color:var(--charcoal-muted);margin-top:1rem">
+            Valid 30 days at the quoted price. No discount that disappears if you think it over.
           </p>
         </div>
       </div>
