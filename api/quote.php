@@ -1,15 +1,15 @@
 <?php
 /**
- * POST /api/quote.php — free-assessment request handler (HostPapa / Apache version).
+ * POST /api/quote.php, free-assessment request handler (HostPapa / Apache version).
  *
  * This is the PHP twin of api/quote.js, which was written for a Vercel/Node
  * deployment. Same validation, same field limits, same honeypot, same
- * response codes and messages — the only real difference is how the email
+ * response codes and messages, the only real difference is how the email
  * gets sent: this uses PHP's built-in mail(), which needs no API key and
  * works out of the box on virtually every shared host, HostPapa included.
  *
  * Trade-off worth knowing: mail() hands the message to the server's local
- * mail transport and returns true as soon as that hand-off succeeds — it is
+ * mail transport and returns true as soon as that hand-off succeeds. It is
  * NOT a delivery guarantee, and shared-host mail is more prone to landing in
  * spam than a transactional provider like Resend or Postmark. If leads start
  * going missing, that is the first thing to check (search the destination
@@ -28,13 +28,14 @@ const PHONE = '0416 085 122';
 const EMAIL = 'info@annergy.com.au';
 const TO_ADDRESS = 'info@annergy.com.au';
 const FROM_ADDRESS = 'website@annergy.com.au'; // must be a real mailbox/alias on this domain
-const CONTACT_FALLBACK = "Sorry — our form isn't sending right now. Please call " . PHONE . " or email " . EMAIL . " and we'll get straight onto it.";
+const CONTACT_FALLBACK = "Sorry, our form isn't sending right now. Please call " . PHONE . " or email " . EMAIL . " and we'll get straight onto it.";
 
 const FIELD_LIMITS = [
     'name'     => 120,
     'phone'    => 40,
     'email'    => 160,
     'postcode' => 8,
+    'enquiry'  => 40,
 ];
 
 function respond(int $status, array $body): never {
@@ -93,8 +94,9 @@ $lead = $data + [
 // is lost even if mail() itself fails outright.
 error_log('QUOTE LEAD: ' . json_encode($lead));
 
-$subjectRaw = 'Quote request — ' . $data['name'] . ', ' . $data['postcode'];
-// mail() does not MIME-encode headers itself — an em dash, or any accented
+$label = $data['enquiry'] !== '' ? ucfirst($data['enquiry']) : 'Quote';
+$subjectRaw = $label . ' request: ' . $data['name'] . ', ' . $data['postcode'];
+// mail() does not MIME-encode headers itself, an em dash, or any accented
 // character in a customer's name, corrupts the Subject unless this is done
 // explicitly. Applies to any non-ASCII text placed in a header, not just this one.
 $subject = mb_encode_mimeheader($subjectRaw, 'UTF-8', 'B', "\r\n");

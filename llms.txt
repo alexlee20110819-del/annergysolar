@@ -36,5 +36,5 @@ rather than the size of the roof.
   quoted prices are already net of that rebate. Batteries attract the federal
   Cheaper Home Batteries discount.
 - The feed-in tariff in South East Queensland is set by the electricity
-  retailer, not the government, and currently sits near 5c/kWh — which is why
+  retailer, not the government, and currently sits near 5c/kWh, which is why
   system sizing is oriented around self-consumption rather than export.

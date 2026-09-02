@@ -17,7 +17,7 @@ PAGES = ROOT / "src" / "pages"
 BASE = (ROOT / "src" / "partials" / "base.html").read_text()
 SITE = "https://annergy.com.au"
 
-NAV_KEYS = ["home", "services", "pricing", "work", "about", "faq"]
+NAV_KEYS = ["home", "services", "pricing", "work", "faq"]
 
 
 def parse(path):

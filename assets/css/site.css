@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Annergy — design system
+   Annergy, design system
    Editorial/architectural: warm paper stock, copper accent, softened corners
    echoing the logo's curves.
    Display: Syne (800) · Text: Source Sans 3
-   Deliberately light-only — see README for why dark mode isn't here.
+   Deliberately light-only, see README for why dark mode isn't here.
    ========================================================================== */
 
 /* ---------- Tokens ---------- */
@@ -15,13 +15,13 @@
   --ink:        #161412;
   --card:       #ffffff;
 
-  --copper:       #b56b42;  /* decorative fills, rules, icon glyphs — NOT text */
+  --copper:       #b56b42;  /* decorative fills, rules, icon glyphs, NOT text */
   --copper-deep:  #8b4a22;  /* copper as text on paper/limestone/white: 5.9–6.8:1 */
   --copper-tint:  #dc9569;  /* copper as text/accent on charcoal: 6.6:1 */
   --mute:         #5a544c;  /* muted body text on paper/limestone: 5.7–6.5:1 */
   --charcoal-muted: #b4b0a9; /* muted text on charcoal: 7.6:1 */
 
-  --line:       #d4ccbe;    /* decorative dividers only — not a UI boundary */
+  --line:       #d4ccbe;    /* decorative dividers only, not a UI boundary */
   --border:     #8f826d;    /* actual input/control borders: 3.3:1 on paper */
   --danger:     #a23b1f;
   --danger-tint: #e28a68;
@@ -49,16 +49,15 @@
   --step-4:  clamp(2.375rem, 1.85rem + 2.4vw, 4rem);
   --step-5:  clamp(2.75rem, 1.9rem + 4vw, 5rem);
 
-  /* Space — 4px grid */
+  /* Space, 4px grid */
   --s-1: .25rem;  --s-2: .5rem;   --s-3: .75rem;  --s-4: 1rem;
   --s-5: 1.5rem;  --s-6: 2rem;    --s-7: 3rem;    --s-8: 4rem;
   --s-9: 6rem;    --s-10: 8rem;
 
-  /* Softened to match the logo's curves. Everything routes through these —
-     no component hardcodes a corner, so the whole feel is four edits. */
+  /* Softened to match the logo's curves. Everything routes through these, no component hardcodes a corner, so the whole feel is four edits. */
   --radius-sm:   10px;   /* inputs, small controls */
   --radius:      16px;   /* cards, panels, figures */
-  --radius-lg:   24px;   /* large surfaces — hero photo, feature panels */
+  --radius-lg:   24px;   /* large surfaces, hero photo, feature panels */
   --radius-pill: 999px;  /* buttons, tags */
   --wrap:      1440px;
   --wrap-narrow: 760px;
@@ -84,7 +83,7 @@ img, svg, video { max-width: 100%; height: auto; display: block; }
 h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; }
 /* Display face: only where it is large, short, and doing a job. */
 h1, h2 { font-family: var(--font-display); font-weight: 800; line-height: 1.06; letter-spacing: -.03em; }
-/* Smaller headings are read, not looked at — set them in the text face. */
+/* Smaller headings are read, not looked at, set them in the text face. */
 h3, h4 { font-family: var(--font-text); font-weight: 700; letter-spacing: -.01em; }
 h1 { font-size: var(--step-5); }
 h2 { font-size: var(--step-4); }
@@ -191,7 +190,7 @@ button { font: inherit; cursor: pointer; }
 }
 /* On the home page only, the header rides transparent over the hero photo
    until scrolled past it, then solidifies. Everywhere else it is plainly
-   solid — there's no photo behind it to float over. */
+   solid, there's no photo behind it to float over. */
 .header[data-float="true"] {
   position: fixed; inset: 0 0 auto; background: transparent; border-color: transparent;
   color: var(--paper);
@@ -259,12 +258,12 @@ button { font: inherit; cursor: pointer; }
   .burger, .mobile-nav { display: none !important; }
 }
 
-/* ---------- Hero (home page — full-bleed photo) ---------- */
+/* ---------- Hero (home page, full-bleed photo) ---------- */
 .hero { position: relative; min-height: 100dvh; background: var(--charcoal); color: var(--paper); overflow: hidden; }
 .hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero__veil {
   position: absolute; inset: 0;
-  /* Weighted to the bottom-left, where the copy sits — so that block stays
+  /* Weighted to the bottom-left, where the copy sits, so that block stays
      comfortably legible while the top-right of the photograph is left alone
      to actually be seen. The h1 also carries a text-shadow as a backstop. */
   background:
@@ -566,7 +565,7 @@ input[type="range"] { width: 100%; accent-color: var(--copper-deep); height: 32p
 @media (min-width: 1000px) { .callbar { display: none; } }
 @media (max-width: 999px) { body { padding-bottom: 56px; } }
 
-/* ---------- Page hero (inner pages — no photo, kicker + rule + heading) ---------- */
+/* ---------- Page hero (inner pages, no photo, kicker + rule + heading) ---------- */
 .pagehead { padding-block: clamp(7.5rem,6.5rem+4vw,9.5rem) clamp(2.5rem,1.8rem+3vw,4rem); border-bottom: 1px solid var(--line); }
 .pagehead__inner { position: relative; }
 .pagehead h1 { font-size: var(--step-4); max-width: 16ch; }
@@ -625,7 +624,7 @@ input[type="range"] { width: 100%; accent-color: var(--copper-deep); height: 32p
 
 /* ---------- Bill before/after bar (savings estimator) ----------
    Two dollar figures ask the reader to do the comparison themselves. Two
-   bars do it for them. Decorative only — aria-hidden, with the same numbers
+   bars do it for them. Decorative only, aria-hidden, with the same numbers
    available as text in the result rows above.
    ------------------------------------------------------------------------ */
 .billbar { display: grid; gap: .625rem; padding-block: var(--s-4); border-bottom: 1px solid rgba(243,239,230,.18); }
@@ -641,7 +640,7 @@ input[type="range"] { width: 100%; accent-color: var(--copper-deep); height: 32p
 /* ---------- Cross-document page transitions ----------
    Native View Transitions: the browser cross-fades between pages on its own,
    no JS and no SPA router. Browsers without support simply navigate as
-   normal — there is no fallback to write and nothing to break.
+   normal, there is no fallback to write and nothing to break.
    ------------------------------------------------------------------------ */
 @view-transition { navigation: auto; }
 
@@ -651,7 +650,7 @@ input[type="range"] { width: 100%; accent-color: var(--copper-deep); height: 32p
 @keyframes vt-out { to   { opacity: 0; transform: translateY(-8px); } }
 @keyframes vt-in  { from { opacity: 0; transform: translateY(10px); } }
 
-/* The header is continuous between pages — let it stay put rather than
+/* The header is continuous between pages, let it stay put rather than
    sliding with the body, so navigation feels like the page changing under a
    fixed chrome rather than the whole window lurching. */
 .header { view-transition-name: site-header; }

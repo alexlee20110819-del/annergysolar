@@ -1,4 +1,4 @@
-/* Annergy Solar — site behaviour. No dependencies. */
+/* Annergy Solar, site behaviour. No dependencies. */
 (function () {
   "use strict";
 
@@ -35,7 +35,7 @@
   /* ---------- Floating header (home page only) ----------
      On the home page the header rides transparent over the hero photo, then
      solidifies once the hero has mostly scrolled past. Every other page sets
-     data-float="false" and the header just stays normally solid — nothing
+     data-float="false" and the header just stays normally solid, nothing
      here runs for them.
   */
   var header = document.getElementById("site-header");
@@ -171,7 +171,7 @@
 
       out.size.textContent = pack.kw + " kW" + (wantsBattery ? " + 10 kWh battery" : "");
       out.annual.textContent = money(annualSaving);
-      out.payback.textContent = payback ? payback.toFixed(1) + " years" : "—";
+      out.payback.textContent = payback ? payback.toFixed(1) + " years" : ", ";
       out.ten.textContent = money(annualSaving * 10 - outlay);
       if (out.newbill) out.newbill.textContent = money(newAnnual / 4);
     };
@@ -187,6 +187,37 @@
       });
     });
     update();
+  }
+
+  /* ---------- Carry the CTA's intent into the form ----------
+     "Request a commercial quote" should not land on a form that asks nothing
+     about commercial. The CTA passes ?enquiry=..., which pre-selects the
+     matching option and says so, rather than making the visitor re-state
+     something they already told us by clicking.
+  */
+  var enquiry = document.querySelector("[data-enquiry]");
+  if (enquiry) {
+    var LABELS = {
+      solar: "a home solar system",
+      battery: "a battery",
+      commercial: "solar for a business",
+      ev: "an EV charger",
+      service: "a repair or service",
+      question: "a question"
+    };
+    var wanted = new URLSearchParams(window.location.search).get("enquiry");
+    if (wanted && LABELS[wanted]) {
+      // Only accept a value the select actually offers.
+      var match = Array.prototype.some.call(enquiry.options, function (o) { return o.value === wanted; });
+      if (match) {
+        enquiry.value = wanted;
+        var hint = document.querySelector("[data-enquiry-hint]");
+        if (hint) {
+          hint.textContent = "You came from a link about " + LABELS[wanted] + ", change this if it's not right.";
+          hint.hidden = false;
+        }
+      }
+    }
   }
 
   /* ---------- Quote form ---------- */

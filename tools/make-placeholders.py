@@ -25,7 +25,10 @@ MANIFEST = [
     ("case-wavell-heights", 1200, 800, "Finished 13.2 kW array on a tile roof",       "Our Work — case 1"),
     ("case-coorparoo",      1200, 800, "Queenslander rear pitch + Powerwall",         "Our Work — case 2"),
     ("case-geebung",        1200, 800, "99 kW warehouse array from above",            "Our Work — case 3"),
-    ("team",                1400, 880, "The crew in front of a branded ute",          "About — team"),
+    ("install-day",         1600, 900, "Crew and van on site, install day",          "Home. how it works"),
+    ("switchboard",         1200, 900, "Switchboard and inverter, neatly finished",  "Services. quality of finish"),
+    ("roof-survey",         1200, 900, "Measuring up a roof at the assessment",      "Pricing. what drives cost"),
+    ("panels-detail",       1600, 900, "Close detail of panels and rail on tin",     "FAQ. section break"),
 ]
 
 SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {S} {S}" width="{S}" height="{S}">
