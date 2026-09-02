@@ -46,15 +46,22 @@ changes needed:**
 | `team.jpg` | 1400×880 | ~3:2 | The crew in front of a branded ute |
 
 **`hero.jpg` is the one exception** — a real, licensed photo, not a
-placeholder: [Unsplash photo 1600585154340-be6161a56a0c](https://unsplash.com/photos/be6161a56a0c),
-used under the [Unsplash License](https://unsplash.com/license) (free for
-commercial use, no permission required). It is self-hosted at
-`assets/img/photos/hero.jpg` (2000×1333, re-encoded to ~380 KB) rather than
-hotlinked, both so it survives if Unsplash ever changes the URL and because the
-CSP in `.htaccess` (`img-src 'self' data:`) would block an external image
-outright. It is deliberately excluded from `tools/make-placeholders.py`'s
-manifest, so re-running that script will never overwrite it. Swap it for a real
-photo of your own work whenever you have one — same path, similar aspect ratio.
+placeholder: [Unsplash photo 1613665813446-82a78c468a1d](https://unsplash.com/photos/82a78c468a1d)
+(commercial rooftop array at sunrise), used under the
+[Unsplash License](https://unsplash.com/license) (free for commercial use, no
+permission required). It is self-hosted at `assets/img/photos/hero.jpg`
+(2000×1353, re-encoded to ~240 KB) rather than hotlinked, both so it survives if
+Unsplash ever changes the URL and because the CSP in `.htaccess`
+(`img-src 'self' data:`) would block an external image outright.
+
+The hero veil is weighted to the bottom-left, where the copy sits, so that block
+stays legible while the top-right of the photograph is left alone to be seen. If
+you swap the hero for a photo with a *bright* bottom-left, check the headline
+still reads — the `text-shadow` on `.hero h1` is a backstop, not a guarantee.
+
+The hero is deliberately excluded from `tools/make-placeholders.py`'s manifest,
+so re-running that script will never overwrite it. Swap it for a real photo of
+your own work whenever you have one — same path, similar aspect ratio.
 
 Update the `alt` text in `src/pages/` when a placeholder is replaced: describe
 what is actually in the frame. Once every placeholder is real, delete
@@ -89,9 +96,21 @@ ever replaced.
 | Copper (accent) | `#b56b42` — decorative fills only, not text |
 
 One accent, used with intention: copper for calls to action, kickers, and key
-figures. Sharp corners throughout (`--radius: 0`) — no rounded buttons, cards,
-or inputs; that flat-edge quality is a deliberate part of this look, not a
-placeholder for one that got missed.
+figures.
+
+Corners are softened to echo the logo's curves, on a four-step scale that every
+component routes through — no component hardcodes a radius, so the whole feel is
+four edits:
+
+| Token | Value | Used for |
+|---|---|---|
+| `--radius-sm` | 10px | inputs, small controls, icon chips |
+| `--radius` | 16px | cards, panels, figures |
+| `--radius-lg` | 24px | large surfaces, feature photos |
+| `--radius-pill` | 999px | buttons, tags, service-area chips |
+
+The full-bleed hero photo is the one deliberate exception — it runs edge to edge,
+so it stays square.
 
 **No dark mode.** The reference mockup is a fixed light aesthetic with
 intentionally-dark *sections* (the hero photo, the CTA bands) rather than an
@@ -108,10 +127,10 @@ rings use the **semantic** tokens instead:
   lighter `--line`, which is decorative-only and doesn't meet the 3:1 a real UI
   boundary needs
 
-Every foreground/background pair was checked at WCAG AA, including text sitting
-over the hero photo — the veil gradient there is intentionally strong and wide,
-with a text-shadow as a second line of defence, so headline text stays legible
-regardless of what's directly behind it in the photo.
+Every foreground/background pair was checked at WCAG AA. Text over the hero
+photo is handled by the veil described above plus a `text-shadow`, rather than
+by a contrast ratio that can be computed once — a photograph's local luminance
+varies, so that pairing is verified by looking at it, not by arithmetic.
 
 The OG card is generated from `assets/img/og.svg` (which embeds the logo):
 
